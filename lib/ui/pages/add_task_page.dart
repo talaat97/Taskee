@@ -230,8 +230,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   addTaskToDb() async {
     try {
-      int value = await _taskController.addTask(
-        Task(
+      int value = await _taskController.addTask(Task(
         title: _titlecontoller.text,
         note: _notecontollre.text,
         isCompleted: 0,
@@ -332,11 +331,10 @@ class _AddTaskPageState extends State<AddTaskPage> {
             ),
     );
 
-    String _formattedTime = userPikedTime!.format(context);
+    var _formattedTime = userPikedTime!.format(context);
     if (isStartTime) {
       setState(() => _statTime = _formattedTime);
-    }
-    if (!isStartTime) {
+    } else if (!isStartTime) {
       setState(() => _endTime = _formattedTime);
     } else
       print('time canceld or something is wrong');

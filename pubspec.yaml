@@ -23,7 +23,7 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
   intl_phone_field2: ^3.3.4
-  intl: ^0.19.0
+  intl: ^0.17.0
   date_picker_timeline:
   flutter_svg: ^2.0.10+1
   flutter_local_notifications: ^17.2.1+2

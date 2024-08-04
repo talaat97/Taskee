@@ -74,8 +74,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () async {
-            mynot.displayNotification(title: 'ghtbrqwe', body: 'sds');
-            mynot.showScudleNotification(5);
+            print('debuug is work ');
+            // mynot.displayNotification(title: 'ghtbrqwe', body: 'sds');
+            // mynot.showScudleNotification(8,20);
+
             ThemeServices().switchTheme();
             setState(() {
               theDarkMode = !Get.isDarkMode;
@@ -170,26 +172,14 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (BuildContext contex, int index) {
               Task task = _taskController.taskList[index];
 
-              var hour = task.startTime.toString().split(':')[0];
-              var minutes = task.startTime.toString().split(':')[1];
-
-              // print(hour);
-              //  print(minutes.substring(0, 2));
-              // var date = DateFormat.jm().parse(task.startTime!);
-              //var mytime = DateFormat('HH:mm').format(date);
-             var minutsWithAM= task.startTime.toString().split(':')[1];
-             var minutsWitouthAM =minutsWithAM.split(' ')[0] ;
+              var date = DateFormat.jm().parse(task.startTime!);
+              var mytime = DateFormat('HH:mm').format(date);
               mynot.scheduledNotification(
-                int.parse(task.startTime.toString().split(':')[0]),
-
-                int.parse(minutsWitouthAM),
+                int.parse(mytime.toString().split(':')[0]),
+                int.parse(mytime.toString().split(':')[1]),
                 task,
               );
-              print('////////////////////////////');
-              print(task.startTime);
-              print(int.parse(task.startTime.toString().split(':')[0]));
-              print(minutsWitouthAM);
-               print('////////////////////////////');
+
               if (task.repeat == 'daily' ||
                   task.date == DateFormat.yMd().format(_selectDate) ||
                   (task.repeat == 'weekly' &&

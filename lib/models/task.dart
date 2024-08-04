@@ -22,7 +22,7 @@ class Task {
     this.repeat,
     this.title,
   });
-  
+
   Task.fromJson(Map<dynamic, dynamic> json) {
     id = json['id'];
     note = json['note'];

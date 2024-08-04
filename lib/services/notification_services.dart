@@ -71,13 +71,14 @@ class NotifyHelper {
   }
 
 //////////////////////////////////
-  void showScudleNotification(timee) async {
+  void showScudleNotification(hour, minits) async {
     tz.initializeTimeZones();
-
-    ////////set the local notifaction
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
     tz.setLocalLocation(tz.getLocation(currentTimeZone));
-    var schudelDate = tz.TZDateTime.now(tz.local).add(Duration(seconds: timee));
+    var schudelDate = tz.TZDateTime.now(tz.local).add(Duration(
+      hours: hour,
+      minutes: minits,
+    ));
     await flutterLocalNotificationsPlugin.zonedSchedule(
       2,
       'Scudle Notification',
@@ -129,11 +130,11 @@ class NotifyHelper {
     tz.TZDateTime scheduledDate =
         tz.TZDateTime(tz.local, fd.year, fd.month, fd.day, hour, minutes);
 
-    print("schudelDate$scheduledDate");
-
+    print("schudelDate = $scheduledDate");
     scheduledDate = afterRemind(remind, scheduledDate);
 
     if (scheduledDate.isBefore(now)) {
+      print('before **********');
       if (repeat == 'daily') {
         scheduledDate = tz.TZDateTime(tz.local, now.year, now.month,
             formattedDate.day + 1, hour, minutes);
@@ -149,7 +150,7 @@ class NotifyHelper {
       scheduledDate = afterRemind(remind, scheduledDate);
     }
 
-    print("next schudelDate$scheduledDate");
+    print("next schudelDate = $scheduledDate");
 
     return scheduledDate;
   }
