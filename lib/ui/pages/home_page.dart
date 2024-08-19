@@ -75,8 +75,7 @@ class _HomePageState extends State<HomePage> {
         leading: IconButton(
           onPressed: () async {
             print('debuug is work ');
-            // mynot.displayNotification(title: 'ghtbrqwe', body: 'sds');
-            // mynot.showScudleNotification(8,20);
+           
 
             ThemeServices().switchTheme();
             setState(() {
