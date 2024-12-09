@@ -8,35 +8,52 @@ jobs:
     name: 🎉 iOS Build
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      # Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
+      # Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           architecture: x64
-      - run: flutter pub get
       
+      # Install dependencies
+      - name: Install Dependencies
+        run: flutter pub get
 
-      - run: pod repo update
+      # Update CocoaPods repository
+      - name: Update CocoaPods
+        run: pod repo update
         working-directory: ios
 
-      - run: flutter build ios --release --no-codesign
+      # Build iOS release without code signing
+      - name: Build iOS App
+        run: flutter build ios --release --no-codesign
 
-      - run: mkdir Payload
+      # Prepare the Payload directory for the IPA
+      - name: Prepare Payload Directory
+        run: |
+          mkdir Payload
+          mv Runner.app Payload
         working-directory: build/ios/iphoneos
 
-      - run: mv Runner.app/ Payload
-        working-directory: build/ios/iphoneos
-
-      - name: Zip output
+      # Package the IPA
+      - name: Package IPA
         run: zip -qq -r -9 FlutterIpaExport.ipa Payload
         working-directory: build/ios/iphoneos
 
-      - name: Upload binaries to release
+      # Upload IPA to GitHub Release
+      - name: Upload IPA to GitHub Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/ios/iphoneos/FlutterIpaExport.ipa
           tag: v3.0
           overwrite: true
-          body: "This is first release"
+          body: |
+            This is the first release.
+            Changelog:
+            - Built with Flutter stable channel.
+            - No code signing applied.
