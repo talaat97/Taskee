@@ -1,65 +1,64 @@
-name: Build and Release iOS App
+name: iOS-ipa-build
 
 on:
-  push:
-    tags:
-      - 'v*' # Triggers the workflow when you push a tag like v1.0.0
-  workflow_dispatch: # Allows you to manually trigger the workflow
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-ios:
+    name: 🎉 iOS Build
     runs-on: macos-latest
-
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Step 2: Set up Flutter
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          channel: 'stable'
+          architecture: arm64
+          flutter-version: 'latest'
 
-      # Step 3: Install dependencies
+      - name: Debug Environment
+        run: |
+          uname -a
+          echo "Flutter PATH: $(which flutter)"
+          flutter --version
+
       - name: Install Dependencies
         run: flutter pub get
 
-      # Step 4: Build the iOS app
-      - name: Build iOS Release
+      - name: Update CocoaPods
+        run: pod repo update
+        working-directory: ios
+
+      - name: Ensure iOS Platform
+        run: flutter create .
+
+      - name: Build iOS App
         run: flutter build ios --release --no-codesign
 
-      # Step 5: Archive the app into an IPA (Optional if automated signing is not set up)
-      - name: Generate IPA File
+      - name: Validate Xcode Environment
+        run: xcodebuild -version
+
+      - name: Prepare Payload Directory
         run: |
-          xcodebuild -workspace ios/Runner.xcworkspace \
-                     -scheme Runner \
-                     -sdk iphoneos \
-                     -configuration Release \
-                     archive -archivePath build/Runner.xcarchive
-          xcodebuild -exportArchive \
-                     -archivePath build/Runner.xcarchive \
-                     -exportPath build/Runner.ipa \
-                     -exportOptionsPlist ios/exportOptions.plist
+          mkdir Payload
+          mv Runner.app Payload
+        working-directory: build/ios/iphoneos
 
-      # Step 6: Upload IPA as a release asset
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_id: ${{ steps.create_release.outputs.id }}
-          asset_path: build/Runner.ipa/Runner.ipa
-          asset_name: Runner.ipa
-          asset_content_type: application/octet-stream
+      - name: Package IPA
+        run: zip -qq -r -9 FlutterIpaExport.ipa Payload
+        working-directory: build/ios/iphoneos
 
-  create_release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Upload IPA to GitHub Release
+        uses: svenstaro/upload-release-action@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
+          repo_token: ${{ secrets.SECRET }}
+          file: build/ios/iphoneos/FlutterIpaExport.ipa
+          tag: v3.0
+          overwrite: true
+          body: |
+            This is the first release.
+            Changelog:
+            - Built with Flutter stable channel.
+            - No code signing applied.
