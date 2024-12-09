@@ -8,43 +8,44 @@ jobs:
     name: 🎉 iOS Build
     runs-on: macos-latest
     steps:
-      # Checkout the repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Set up Flutter
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           architecture: x64
       
-      # Install dependencies
       - name: Install Dependencies
         run: flutter pub get
 
-      # Update CocoaPods repository
+      - name: Diagnose Flutter Setup
+        run: flutter doctor -v
+
       - name: Update CocoaPods
         run: pod repo update
         working-directory: ios
 
-      # Build iOS release without code signing
+      - name: Ensure iOS Platform
+        run: flutter create .
+
       - name: Build iOS App
         run: flutter build ios --release --no-codesign
 
-      # Prepare the Payload directory for the IPA
+      - name: Validate Xcode Environment
+        run: xcodebuild -version
+
       - name: Prepare Payload Directory
         run: |
           mkdir Payload
           mv Runner.app Payload
         working-directory: build/ios/iphoneos
 
-      # Package the IPA
       - name: Package IPA
         run: zip -qq -r -9 FlutterIpaExport.ipa Payload
         working-directory: build/ios/iphoneos
 
-      # Upload IPA to GitHub Release
       - name: Upload IPA to GitHub Release
         uses: svenstaro/upload-release-action@v2
         with:
