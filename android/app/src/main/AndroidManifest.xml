@@ -8,6 +8,8 @@
         android:label="To Do"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDcQMz0G6lZD35MeIBE9i4PHiq1t3ELJeI"/>
         <receiver
             android:name="com.dexterous.flutterlocalnotifications.receivers.ActionBroadcastReceiver"
             android:exported="true"/>

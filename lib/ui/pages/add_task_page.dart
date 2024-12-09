@@ -33,8 +33,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
   String _endTime = DateFormat('hh:mm a')
       .format(DateTime.now().add(const Duration(minutes: 20)))
       .toString();
-  int _reminddate = 5;
-  List<int> remindList = [5, 10, 15, 20];
+  int _reminddate = 0;
+  List<int> remindList = [0, 5, 10, 15, 20];
   String _repeatTime = 'none';
   List<String> repeaTlist = ['none', 'daily', 'weekly', 'monthly'];
   int _selectedColor = 0;
@@ -61,11 +61,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
           children: [
             InputField(
                 text: 'Tilte',
-                hint: 'Enter title here.',
+                hint: 'Add title ',
                 controller: _titlecontoller),
             InputField(
               text: 'Note',
-              hint: 'Enter note here.',
+              hint: "Add note or enter  ' . '",
               controller: _notecontollre,
             ),
             InputField(
@@ -195,14 +195,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
       ),
       centerTitle: true,
       title: Text('Add task', style: headingStyle),
-      actions: const [
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage('images/person.jpeg'),
-          ),
-        )
-      ],
     );
   }
 
@@ -210,7 +202,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     if (_titlecontoller.text.isEmpty || _notecontollre.text.isEmpty) {
       return Get.snackbar(
         'Required',
-        'field are Required bos bos ',
+        'field are Required motherfucker ',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.white,
         colorText: pinkClr,

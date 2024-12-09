@@ -38,12 +38,10 @@ class NotificationScreenState extends State<NotificationScreen> {
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(15),
-            child: Text(
-              '🥰 Hey Bos Bos remeber 🥰',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
+          const Text(
+            '🥰 Hey motherfucker ! 🥰 \n Remember',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           Expanded(
               child: Container(
@@ -94,7 +92,7 @@ class NotificationScreenState extends State<NotificationScreen> {
                       fontSize: 40,
                     ),
                   ),
-                 const SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   const Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [

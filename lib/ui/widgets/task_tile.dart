@@ -33,20 +33,16 @@ class TaskTile extends StatelessWidget {
                   children: [
                     Text(task.title!,
                         style: titleStyle.copyWith(
-                            fontSize: 16,
+                            fontSize: 30,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey[100])),
-                    const SizedBox(height: 12),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.access_time_filled_rounded,
                           color: Colors.grey[200],
-                          size: 18,
-                        ),
-                        const SizedBox(
-                          width: 12,
+                          size: 30,
                         ),
                         Text(
                           '${task.startTime}-${task.endTime}',
@@ -56,26 +52,28 @@ class TaskTile extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      width: 12,
+                      width: 0,
                     ),
-                    Text(task.note!,
+                    Text(
+                        task.note == '.'
+                            ? ' remeber to do this task motherfucker '
+                            : task.note!,
                         style: titleStyle.copyWith(
-                            fontSize: 13, color: Colors.grey[100]))
+                            fontSize: 25, color: Colors.grey[100]))
                   ],
                 ),
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              height: 60,
-              width: 0.5,
+              height: 150,
+              width: 2,
               color: Colors.grey[200]!.withOpacity(0.7),
             ),
             RotatedBox(
               quarterTurns: 3,
               child: Text(
-                task.isCompleted == 0 ? 'TODO' : 'Complected',
-                style: titleStyle.copyWith(color: Colors.white, fontSize: 10),
+                task.isCompleted == 0 ? 'TODO' : 'Completed',
+                style: titleStyle.copyWith(color: Colors.white, fontSize: 20),
               ),
             ),
           ],

@@ -74,8 +74,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () async {
-            print('debuug is work ');
-           
+            print('debuug is work');
 
             ThemeServices().switchTheme();
             setState(() {
@@ -140,21 +139,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   _addDateBar() {
-    return DatePicker(
-      DateTime.now(),
-      width: 70,
-      height: 100,
-      dateTextStyle: titleStyle.copyWith(fontSize: 20, color: Colors.grey),
-      dayTextStyle: titleStyle.copyWith(fontSize: 16, color: Colors.grey),
-      monthTextStyle: titleStyle.copyWith(fontSize: 12, color: Colors.grey),
-      initialSelectedDate: DateTime.now(),
-      selectionColor: Theme.of(context).primaryColor,
-      selectedTextColor: Colors.white,
-      onDateChange: (date) {
-        setState(() {
-          _selectDate = date;
-        });
-      },
+    return Material(
+      elevation: 2,
+      child: DatePicker(
+        DateTime.now(),
+        width: 80,
+        height: 130,
+        dateTextStyle: titleStyle.copyWith(color: Colors.grey),
+        dayTextStyle: titleStyle.copyWith(color: Colors.grey),
+        monthTextStyle: titleStyle.copyWith(color: Colors.grey),
+        initialSelectedDate: DateTime.now(),
+        selectionColor: Theme.of(context).primaryColor,
+        selectedTextColor: Colors.white,
+        onDateChange: (date) {
+          setState(() {
+            _selectDate = date;
+          });
+        },
+      ),
     );
   }
 
@@ -236,15 +238,15 @@ class _HomePageState extends State<HomePage> {
               children: [
                 SvgPicture.asset(
                   'images/task.svg',
-                  height: 100,
+                  height: 120,
                   semanticsLabel: 'task',
-                  color: primaryClr.withOpacity(0.5),
+                  color: primaryClr.withOpacity(0.7),
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: Text(
-                    'No tasks added yet! , we are waiting you bos bos to add  tasks ❤',
+                    'No tasks added yet! , we are waiting  you motherfucker to add  tasks ❤',
                     style: subtitleStyle,
                     textAlign: TextAlign.center,
                   ),
