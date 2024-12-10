@@ -74,8 +74,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () async {
-            print('debuug is work');
-
             ThemeServices().switchTheme();
             setState(() {
               theDarkMode = !Get.isDarkMode;
@@ -246,7 +244,7 @@ class _HomePageState extends State<HomePage> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: Text(
-                    'No tasks added yet! , we are waiting  you motherfucker to add  tasks ❤',
+                    'No tasks added yet! , we are waiting  you Soma  to add  tasks ❤',
                     style: subtitleStyle,
                     textAlign: TextAlign.center,
                   ),

@@ -39,7 +39,7 @@ class NotificationScreenState extends State<NotificationScreen> {
       body: Column(
         children: [
           const Text(
-            '🥰 Hey motherfucker ! 🥰 \n Remember',
+            '🥰 Hey Soma  ! 🥰 \n Remember',
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),

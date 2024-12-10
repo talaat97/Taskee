@@ -56,7 +56,7 @@ class TaskTile extends StatelessWidget {
                     ),
                     Text(
                         task.note == '.'
-                            ? ' remeber to do this task motherfucker '
+                            ? ' remeber to do this task Soma  '
                             : task.note!,
                         style: titleStyle.copyWith(
                             fontSize: 25, color: Colors.grey[100]))
