@@ -351,13 +351,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
                               fit: BoxFit.cover,
                             )
                           : Image.asset(
-                              'images/bosbos.jpeg',
+                              'images/goose.jpeg',
                               fit: BoxFit.cover,
                             ),
                     ),
                     TextButton(
                       onPressed: _pickImage,
-                      child: const Text('Change picture bosbos'),
+                      child: const Text('Change picture goose'),
                     ),
                   ],
                 ),
@@ -376,7 +376,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     fit: BoxFit.cover,
                   )
                 : Image.asset(
-                    'images/bosbos.jpeg',
+                    'images/goose.jpeg',
                     width: 45.0,
                     height: 50.0,
                     fit: BoxFit.cover,
