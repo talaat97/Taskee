@@ -351,7 +351,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                               fit: BoxFit.cover,
                             )
                           : Image.asset(
-                              'images/goose.jpeg',
+                              'images/goose.jpg',
                               fit: BoxFit.cover,
                             ),
                     ),
@@ -376,7 +376,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     fit: BoxFit.cover,
                   )
                 : Image.asset(
-                    'images/goose.jpeg',
+                    'images/goose.jpg',
                     width: 45.0,
                     height: 50.0,
                     fit: BoxFit.cover,

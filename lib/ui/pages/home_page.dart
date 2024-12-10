@@ -372,7 +372,7 @@ class _HomePageState extends State<HomePage> {
                           fit: BoxFit.cover,
                         )
                       : Image.asset(
-                          'images/goose.jpeg',
+                          'images/goose.jpg',
                           fit: BoxFit.cover,
                         ),
                   TextButton(
@@ -397,7 +397,7 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.cover,
                   )
                 : Image.asset(
-                    'images/goose.jpeg',
+                    'images/goose.jpg',
                     width: 45.0,
                     height: 50.0,
                     fit: BoxFit.cover,
