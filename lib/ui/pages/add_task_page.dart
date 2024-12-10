@@ -202,7 +202,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     if (_titlecontoller.text.isEmpty || _notecontollre.text.isEmpty) {
       return Get.snackbar(
         'Required',
-        'field are Required Soma  ',
+        'field are Required Soma',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.white,
         colorText: pinkClr,

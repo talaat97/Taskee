@@ -244,7 +244,7 @@ class _HomePageState extends State<HomePage> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: Text(
-                    'No tasks added yet! , we are waiting  you Soma  to add  tasks ❤',
+                    'No tasks added yet! , we are waiting you Soma to add tasks ❤',
                     style: subtitleStyle,
                     textAlign: TextAlign.center,
                   ),

@@ -105,7 +105,7 @@ class NotifyHelper {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       task.id!,
       task.title,
-      task.note == '.' ? 'Remeber to do this task Soma  💕🥰👍' : task.note,
+      task.note == '.' ? 'Remeber to do this task Soma 💕🥰👍' : task.note,
       _nextInstanceOfTenAM(
           hour, minutes, task.remind!, task.repeat!, task.date!),
       const NotificationDetails(
