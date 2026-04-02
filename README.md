@@ -1,14 +1,12 @@
 # 📝 To-Do App
 
-A simple and modern **To-Do application** built باستخدام Flutter to help you stay organized and productive.
+A simple and modern **To-Do application** built with Flutter to help you stay organized and productive.
 
 ---
 
 ## 📱 Preview
 
-<!-- ضع صورة التطبيق هنا --![taskee](https://github.com/user-attachments/assets/e9e14487-2252-4244-90f7-2e9bafc717ba)
->
-
+![taskee](https://github.com/user-attachments/assets/a54302cb-542d-402a-b586-42ed2ace4b68)
 
 
 ---
