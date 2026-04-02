@@ -1,16 +1,76 @@
-# to_do_app
+# 📝 To-Do App
 
-A new Flutter project.
+A simple and modern **To-Do application** built باستخدام Flutter to help you stay organized and productive.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Preview
 
-A few resources to get you started if this is your first Flutter project:
+<!-- ضع صورة التطبيق هنا --![taskee](https://github.com/user-attachments/assets/e9e14487-2252-4244-90f7-2e9bafc717ba)
+>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+---
+
+## ✨ Features
+
+* ➕ Add new tasks بسهولة
+* ✅ Mark tasks as completed
+* 🗑️ Delete tasks
+* 🎯 Clean and intuitive UI
+* ⚡ Fast and responsive performance
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+```bash
+git clone https://github.com/talaat97/to_do_app.git
+cd to_do_app
+flutter pub get
+flutter run
+```
+
+---
+
+## 🛠️ Built With
+
+* Flutter
+* Dart
+
+---
+
+## 📂 Project Structure
+
+```
+lib/
+ ├── models/
+ ├── screens/
+ ├── widgets/
+ └── main.dart
+```
+
+---
+
+## 📌 Future Improvements
+
+* 🔔 Notifications & reminders
+* ☁️ Cloud sync (Firebase / Supabase)
+* 🌙 Dark mode support
+* 📊 Task statistics
+
+---
+
+## 👨‍💻 Author
+
+talaat97
+[GitHub](https://github.com/your-username)
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
